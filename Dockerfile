@@ -30,7 +30,6 @@ RUN source /tmp/arch_env \
          exit 1; \
        fi
 
-
 FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
 RUN apt-get update \
@@ -55,6 +54,8 @@ RUN apt-get update \
         procps \
         python3-pip \
         python3-pygments \
+        node \
+        npm \
         texlive \
         texlive-bibtex-extra \
         texlive-extra-utils \

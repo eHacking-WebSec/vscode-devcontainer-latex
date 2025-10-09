@@ -1,52 +1,74 @@
 {
   "name": "LaTeX",
   "dockerFile": "../Dockerfile",
-  // "image": "ghcr.io/chearix/vscode-devcontainer-latex:main",
+  // "image": "ghcr.io/ehacking-websec/vscode-devcontainer-latex:main",
+  "remoteUser": "vscode",
   "customizations": {
     "vscode": {
       "settings": {
-        "commentAnchors.tags.matchPrefix": [
-          "#",
-          "%"
-        ],
-        "files.trimTrailingWhitespace": true,
-        "java.home": "/usr/lib/jvm/default-java",
-        "latex-workshop.synctex.afterBuild.enabled": true,
-        "latex-workshop.latex.recipes": [
-          {
-            "name": "latexmk",
-            "tools": [
-              "latexmk"
-            ]
-          }
-        ],
         "latex-workshop.latex.tools": [
           {
             "name": "latexmk",
             "command": "latexmk",
             "args": [
-              "-shell-escape",
               "-synctex=1",
               "-interaction=nonstopmode",
               "-file-line-error",
               "-pdf",
               "-outdir=%OUTDIR%",
               "%DOC%"
-            ],
-            "env": {}
+            ]
+          },
+          {
+            "name": "latexmk-solution",
+            "command": "latexmk",
+            "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-pdf",
+              "-outdir=%OUTDIR%",
+              "-jobname=%DOCFILE%-Solution",
+              "%DOC%"
+            ]
           }
         ],
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "Task",
+            "tools": [
+              "latexmk"
+            ]
+          },
+          {
+            "name": "Solution",
+            "tools": [
+              "latexmk-solution"
+            ]
+          },
+          {
+            "name": "Task + Solution",
+            "tools": [
+              "latexmk",
+              "latexmk-solution"
+            ]
+          }
+        ],
+        "latex-workshop.synctex.afterBuild.enabled": true,
         "latex-workshop.view.pdf.trim": 1,
         "latex-workshop.view.pdf.viewer": "tab",
-        "ltex.ltex-ls.path": "/opt/ltex/",
-        // "ltex.java.path": "/usr/lib/jvm/default-java",
         "ltex.language": "en-US",
+        "ltex.ltex-ls.path": "/opt/ltex/",
+        "ltex.java.path": "/usr/lib/jvm/default-java",
         "ltex.latex.commands": {
           "\\lstinput{}": "ignore",
           "\\lstinline||": "ignore",
           "\\lstinline{}": "ignore",
           "\\moderncvtheme{}": "ignore"
         },
+        "commentAnchors.tags.matchPrefix": ["#", "%"],
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
         "telemetry.enableTelemetry": false
       },
       "extensions": [
@@ -56,16 +78,5 @@
         "tecosaur.latex-utilities"
       ]
     }
-  },
-  "features": {
-    // "ghcr.io/devcontainers/features/rust:1": {},
-    // "ghcr.io/lee-orr/rusty-dev-containers/cargo-binstall:0": { "packages": "tex-fmt"}
-  },
-  "remoteUser": "vscode"
-  // Podman / Fedora Silverblue fix
-  // "containerUser": "vscode",
-  // "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,Z",
-  // "runArgs": [
-  //   "--userns=keep-id"
-  // ]
+  }
 }
