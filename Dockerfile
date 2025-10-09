@@ -54,7 +54,7 @@ RUN apt-get update \
         procps \
         python3-pip \
         python3-pygments \
-        node \
+        nodejs \
         npm \
         texlive \
         texlive-bibtex-extra \
