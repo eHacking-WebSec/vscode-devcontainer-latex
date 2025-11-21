@@ -15,6 +15,7 @@
               "-interaction=nonstopmode",
               "-file-line-error",
               "-pdf",
+              "-shell-escape",
               "-outdir=%OUTDIR%",
               "%DOC%"
             ]
@@ -27,6 +28,7 @@
               "-interaction=nonstopmode",
               "-file-line-error",
               "-pdf",
+              "-shell-escape",
               "-outdir=%OUTDIR%",
               "-jobname=%DOCFILE%-Solution",
               "%DOC%"
