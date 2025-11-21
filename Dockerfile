@@ -57,13 +57,7 @@ RUN apt-get update \
         nodejs \
         npm \
         texlive \
-        texlive-bibtex-extra \
-        texlive-extra-utils \
-        texlive-fonts-extra \
-        texlive-lang-german \
         texlive-latex-extra \
-        texlive-science \
-        texlive-xetex \
     && rm -rf /var/lib/apt/lists/*
 
 # ENV JAVA_HOME=/usr/lib/jvm/default-java
